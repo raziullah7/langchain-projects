@@ -1,5 +1,3 @@
-import socket
-
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -8,11 +6,14 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 load_dotenv()
 
-# Workaround: IPv6 to Google's API hangs on this network, so resolve IPv4 only.
-_getaddrinfo = socket.getaddrinfo
-socket.getaddrinfo = lambda *a, **k: [
-    r for r in _getaddrinfo(*a, **k) if r[0] == socket.AF_INET
-]
+# Workaround: if IPv6 to Google's API hangs on your network, uncomment
+# this to resolve IPv4 only.
+# import socket
+#
+# _getaddrinfo = socket.getaddrinfo
+# socket.getaddrinfo = lambda *a, **k: [
+#     r for r in _getaddrinfo(*a, **k) if r[0] == socket.AF_INET
+# ]
 
 
 def main():
