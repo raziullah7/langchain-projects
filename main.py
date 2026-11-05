@@ -6,6 +6,15 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 load_dotenv()
 
+# Workaround: if IPv6 to Google's API hangs on your network, uncomment
+# this to resolve IPv4 only.
+# import socket
+#
+# _getaddrinfo = socket.getaddrinfo
+# socket.getaddrinfo = lambda *a, **k: [
+#     r for r in _getaddrinfo(*a, **k) if r[0] == socket.AF_INET
+# ]
+
 
 @tool
 def search(query: str) -> str:
