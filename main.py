@@ -9,7 +9,6 @@ from ipv4_only import force_ipv4
 
 load_dotenv()
 
-# Workaround: IPv6 to Google's API hangs on this network, so resolve IPv4 only.
 force_ipv4()
 
 # custom search tool using tavily - not needed when the team already has lanchain_tavily

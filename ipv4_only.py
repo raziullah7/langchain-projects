@@ -1,3 +1,5 @@
+# Workaround: if IPv6 to Google's API hangs on your network, import and
+# call force_ipv4() to resolve IPv4 only.
 import socket
 
 
