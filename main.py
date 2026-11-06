@@ -1,11 +1,8 @@
 # Workaround: if IPv6 to Google's API hangs on your network, uncomment
 # this to resolve IPv4 only.
-# import socket
+# from ipv4_only import force_ipv4
 #
-# _getaddrinfo = socket.getaddrinfo
-# socket.getaddrinfo = lambda *a, **k: [
-#     r for r in _getaddrinfo(*a, **k) if r[0] == socket.AF_INET
-# ]
+# force_ipv4()
 
 
 def main():
