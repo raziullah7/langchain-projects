@@ -5,16 +5,12 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_tavily import TavilySearch
 from pydantic import BaseModel, Field
 
+from ipv4_only import force_ipv4
+
 load_dotenv()
 
-# Workaround: if IPv6 to Google's API hangs on your network, uncomment
-# this to resolve IPv4 only.
-import socket
-
-_getaddrinfo = socket.getaddrinfo
-socket.getaddrinfo = lambda *a, **k: [
-    r for r in _getaddrinfo(*a, **k) if r[0] == socket.AF_INET
-]
+# Workaround: IPv6 to Google's API hangs on this network, so resolve IPv4 only.
+force_ipv4()
 
 # custom search tool using tavily - not needed when the team already has lanchain_tavily
 # from tavily import TavilyClient
